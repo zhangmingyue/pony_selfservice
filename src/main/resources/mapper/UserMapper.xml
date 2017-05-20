@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pony_self_service.dao.UserDAO">
+
+    <insert id="insert" parameterType="com.pony_self_service.domain.User">
+        <selectKey resultType="int" keyProperty="id">
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
+        INSERT INTO
+        `self_service_user`(
+        `nickname`,
+        `phone`,
+        `email`,
+        `password`,
+        `create_time` ,
+        `last_login_time`,
+        `status`
+        )VALUES(
+        #{nickname},
+        #{phone},
+        #{email},
+        #{password},
+        #{create_time},
+        #{last_login_time},
+        #{status}
+        )
+    </insert>
+
+    <select id="getAll" resultType="com.pony_self_service.domain.User">
+        SELECT * FROM `self_service_user`
+    </select>
+
+    <select id="getUserByUserNameAndPassword" resultType="com.pony_self_service.domain.User">
+        SELECT * FROM `self_service_user` where nickname=#{nickname} and password=#{password}
+    </select>
+
+</mapper>
