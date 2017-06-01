@@ -26,7 +26,7 @@ import javax.validation.Valid;
  * @created:17/3/5
  */
 @Controller
-@RequestMapping(value = "/login")
+@RequestMapping(value = "/")
 public class LoginController {
 
     private static final Logger logger = Logger.getLogger(LoginController.class);
